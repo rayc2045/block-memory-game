@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vanilla JS Block Memory Game</title>
+  <link rel="stylesheet" href="./css/style.min.css">
+</head>
+<body>
+  <div class="wrapper">
+    <section class="infos">
+      <h1 class="title">Block Memory Game</h1>
+      <h2 class="status">Click in the flashing order</h2>
+    </section>
+
+    <section class="columns">
+      <section class="row">
+        <section class="block block1" id="1"></section>
+        <section class="block block2" id="2"></section>
+      </section>
+      <section class="row">
+        <section class="block block3" id="3"></section>
+        <section class="block block4" id="4"></section>
+      </section>
+      <section class="row">
+        <ul class="inputProgress">
+          <li class="circle"></li>
+          <li class="circle"></li>
+          <li class="circle"></li>
+          <li class="circle"></li>
+        </ul>
+      </section>
+    </section>
+  </div>
+
+  <section class="endWindow hide">
+    <p class="memoryLevel"></p>
+    <button class="restart">Try Again</button>
+  </section>
+
+  <script src="./js/script.min.js"></script>
+</body>
+</html>

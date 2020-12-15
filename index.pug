@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Vanilla JS Block Memory Game
+    link(rel="stylesheet", href="./css/style.css")
+  body
+    .wrapper
+      section.infos
+        h1.title Block Memory Game
+        h2.status Click in the flashing order
+      section.columns
+        section.row
+          #1.block.block1
+          #2.block.block2
+        section.row
+          #3.block.block3
+          #4.block.block4
+        section.row
+          ul.inputProgress
+            li.circle
+            li.circle
+            li.circle
+            li.circle
+    section.endWindow.hide
+      p.memoryLevel
+      button.restart Try Again
+
+    script(src="./js/script.js")
