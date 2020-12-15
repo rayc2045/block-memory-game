@@ -114,12 +114,10 @@ class MemoryGame {
   startNewLevel() {
     this.replayTimes = 1;
 
-    // At level 0(warming up level), the answer is always '1234'
     if (this.currentLevel === 0) {
       this.levelString = '1234';
       this.statusElement.textContent = 'Click in the flashing order';
     } else {
-      // Add two random numbers at a higher level
       for (let i = 0; i < 2; i++) {
         this.levelString += this.getRandomNumber(1, 4);
       }
@@ -169,14 +167,14 @@ class MemoryGame {
       this.showInputProgressCircles(tempString);
       this.blocks.flashAndPlayAudio(inputChar);
 
-      // All correct (Checking input one on one)
+      // Checking input one on one
       if (this.levelString.indexOf(tempString) === 0) {
         // console.log('So far good.');
-				if (tempString === this.levelString) this.gameContinue();
-				return;
-			}
-      if (this.replayTimes > 0) return this.replayCurrentLevel();
-			this.gameOver();
+        // All correct
+        if (tempString === this.levelString) this.gameContinue();
+      } else {
+        this.replayTimes > 0 ? this.replayCurrentLevel() : this.gameOver();
+      }
     }
   }
 
