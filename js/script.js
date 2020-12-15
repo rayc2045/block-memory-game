@@ -35,38 +35,28 @@ class Blocks {
 
   flashAndPlayAudio(note) {
     const block = this.blocks.find((data) => data.name === note);
-
     if (block) {
       block.el.classList.add('light');
-      block.audio.currentTime = 0; // Reset the playing time, let audios be played in any time
+      block.audio.currentTime = 0;
       block.audio.play();
-
-      setTimeout(() => {
-        if (!this.allOn) block.el.classList.remove('light'); // 'allOn' is a key to control the light off timing. In general, one of the lights will be turned off 0.1s after clicking, but when functions flashAndPlayAudio() and turnAllOn() being executed at the same time(when a player clicks wrong), this setTimeout() will be ignored and all lights will be turned off after 0.4s.
-      }, 100);
+      if (!this.allOn) setTimeout(() => block.el.classList.remove('light'), 100);
+      // 'allOn' is a key to control the light off timing. In general, one of the lights will be turned off 0.1s after clicking, but when functions flashAndPlayAudio() and turnAllOn() being executed at the same time(when a player clicks wrong), this setTimeout() will be ignored and all lights will be turned off after 0.4s.
     }
   }
 
   turnAllOn() {
     this.allOn = true;
-
-    this.blocks.forEach((block) => {
-      block.el.classList.add('light');
-    });
+    this.blocks.forEach((block) => block.el.classList.add('light'));
   }
 
   turnAllOff() {
     this.allOn = false;
-
-    this.blocks.forEach((block) => {
-      block.el.classList.remove('light');
-    });
+    this.blocks.forEach((block) => block.el.classList.remove('light'));
   }
 
   playSet(type) {
     const sets = this.soundSets.find((obj) => obj.name === type).sets;
     // console.log(sets);
-
     sets.forEach((obj) => {
       obj.currentTime = 0;
       obj.play();
@@ -107,12 +97,6 @@ class MemoryGame {
 
     setTimeout(() => this.startNewLevel(), 1500);
 
-    // this.blocks.blocks.forEach((el) => {
-    // 	el.el.addEventListener('click', (e) => {
-    // 		// console.log(e.target.id);
-    // 		this.checkInputs(e.target.id);
-    // 	});
-    // });
     this.blockElements.forEach((el) => {
       el.addEventListener('click', (e) => {
         // console.log(e.target.id);
@@ -153,15 +137,10 @@ class MemoryGame {
 
   startListening() {
     this.mode = 'Listening';
-
-    this.blockElements.forEach((el) => {
-      el.classList.add('stopInputting');
-    });
-
+    this.blockElements.forEach((el) => el.classList.add('stopInputting'));
     this.showInputProgressCircles(''); // Not yet 'inputting', so put an empty string as a parameter
 
     const notesArray = this.levelString.split('');
-
     // Continuously take out one element from notesArray to play the corresponding sound
     this.timer = setInterval(() => {
       const note = notesArray.shift();
@@ -178,11 +157,7 @@ class MemoryGame {
 
   startInputting() {
     this.mode = 'Inputting';
-
-    this.blockElements.forEach((el) => {
-      el.classList.remove('stopInputting');
-    });
-
+    this.blockElements.forEach((el) => el.classList.remove('stopInputting'));
     this.userInput = '';
   }
 
@@ -194,17 +169,14 @@ class MemoryGame {
       this.showInputProgressCircles(tempString);
       this.blocks.flashAndPlayAudio(inputChar);
 
-      // Checking input one on one
+      // All correct (Checking input one on one)
       if (this.levelString.indexOf(tempString) === 0) {
         // console.log('So far good.');
-        // If the player's input is completely same to this.levelString
 				if (tempString === this.levelString) this.gameContinue();
 				return;
 			}
-
-			this.replayTimes > 0
-				? this.replayCurrentLevel()
-				: this.gameOver();
+      if (this.replayTimes > 0) return this.replayCurrentLevel();
+			this.gameOver();
     }
   }
 
@@ -253,7 +225,6 @@ class MemoryGame {
     this.mode = 'Waiting';
     this.blocks.turnAllOn();
     this.blocks.playSet('wrong');
-
     setTimeout(() => this.blocks.turnAllOff(), this.playInterval);
 
     setTimeout(() => {
