@@ -28,8 +28,7 @@ class Blocks {
 	}
 
 	getAudioObject(pitch) {
-		return new Audio(`../audio/piano_sound_${pitch}.wav`);
-		// return new Audio(`https://awiclass.monoame.com/pianosound/set/${pitch}.wav`);
+		return new Audio(`https://raw.githubusercontent.com/rayc2045/block-memory-game/main/audio/piano_sound_${pitch}.wav`);
 	}
 
 	flashAndPlayAudio(note) {
