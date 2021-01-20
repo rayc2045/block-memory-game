@@ -85,16 +85,6 @@ class MemoryGame {
   }
 
   events() {
-    document.onselectstart = () => {
-      return false;
-    };
-    document.ondragstart = () => {
-      return false;
-    };
-    document.oncontextmenu = () => {
-      return false;
-    };
-
     setTimeout(() => this.startNewLevel(), 1500);
 
     this.blockElements.forEach((el) => {
@@ -254,4 +244,7 @@ class MemoryGame {
   }
 }
 
+document.onselectstart = () => false;
+document.ondragstart = () => false;
+document.oncontextmenu = () => false;
 window.onload = () => new MemoryGame();
