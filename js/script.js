@@ -1,13 +1,13 @@
 console.time();
 
-let blockData = [
+const blockData = [
   { selector: '.block1', name: '1', pitch: '1' },
   { selector: '.block2', name: '2', pitch: '2' },
   { selector: '.block3', name: '3', pitch: '3' },
   { selector: '.block4', name: '4', pitch: '4' },
 ];
 
-let soundData = [
+const soundData = [
   { name: 'correct', sets: [1, 3, 5, 8] },
   { name: 'wrong', sets: [2, 4, 5.5, 7] },
 ];
