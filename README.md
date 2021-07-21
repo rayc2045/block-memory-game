@@ -1,6 +1,6 @@
 # Block Memory Game
 
-[![Photo](https://cdn.dribbble.com/users/3800131/screenshots/10000193/media/5a5acc6684a86a5f46a9b4cd34f4df8e.gif)](https://dribbble.com/raychangdesign)
+![Photo](https://cdn.dribbble.com/users/3800131/screenshots/10000193/media/5a5acc6684a86a5f46a9b4cd34f4df8e.gif)
 
 [> Block Memory Game](https://rayc2045.github.io/block-memory-game/)
 
@@ -15,4 +15,4 @@
 - 為增加遊戲性，遊戲關卡由隨機字串組成，關卡絕不重複
 - 利用變數值及條件運算式（if...else）控制玩家點按時機、疏忽按錯補救次數（每關一次）
 - 使用模板字符串（Template Literal）和三元運算子（Ternary Operator），搭配 DOM 操作做出遊戲關卡進度點
-- 使用 CSS Media Query 做響應式設計，及解決移動設備觸控造成的 hover 效果殘留問題
+- 使用 CSS Media Query 做響應式設計，及解決移動設備觸控造成的 hover 問題
